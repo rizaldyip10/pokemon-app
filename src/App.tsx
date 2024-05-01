@@ -1,4 +1,7 @@
-import './App.css'
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/home-page';
+import RootLayout from './pages/layout';
+import DetailPage from './pages/detail-page';
 // import usePokemonList from './hooks/usePokemonList'
 // import usePokemonDetails from './hooks/usePokemonDetail'
 
@@ -7,13 +10,16 @@ function App() {
   // Example below
   // const list = usePokemonList();
   // const detail = usePokemonDetails("bulbasaur");
+  
 
   return (
-    <div>
-      {/* Start the development here */}
-      {/* Use react-router-dom Expected routes:  */}
-      {/* 1. Home path: "/" */}
-      {/* 1. Details path: "/details:" */}
+    <div className=''>
+      <Routes>
+        <Route path='/' element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path=':pokemonName' element={<DetailPage />} />
+        </Route>
+      </Routes>
     </div>
   )
 }
